@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(250, 250, 248, 0.97)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.97)';
             navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
         } else {
-            navbar.style.background = 'rgba(250, 250, 248, 0.85)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.85)';
             navbar.style.boxShadow = 'none';
         }
     });
@@ -166,30 +166,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Submit ────────────────────────────────────────────────────────────────
 
-    auditBtn.addEventListener('click', () => {
-        const { valid, element } = validateForm();
-        if (!valid) return;
+    if (auditBtn) {
+        auditBtn.addEventListener('click', () => {
+            const { valid, element } = validateForm();
+            if (!valid) return;
 
-        // Build recommendation
-        const recommendations = {
-            fire:  "Your profile suggests a results-oriented disposition with strong executive energy. A Predictive Transit Report would be most effective for identifying optimal windows for action and leadership initiatives.",
-            water: "Your profile indicates a high degree of emotional intelligence and interpersonal sensitivity. A Natal Chart Analysis or Relationship Synastry session would provide the most meaningful insight.",
-            air:   "Your profile reflects a strategic, communication-driven orientation. A Natal Chart Analysis focused on Mercury and the third and ninth house would be particularly illuminating.",
-            earth: "Your profile indicates a preference for measurable, structured outcomes. An Electional Timing consultation would provide a concrete, actionable framework for your next significant decision."
-        };
+            // Build recommendation
+            const recommendations = {
+                fire:  "Your profile suggests a results-oriented disposition with strong executive energy. A Predictive Transit Report would be most effective for identifying optimal windows for action and leadership initiatives.",
+                water: "Your profile indicates a high degree of emotional intelligence and interpersonal sensitivity. A Natal Chart Analysis or Relationship Synastry session would provide the most meaningful insight.",
+                air:   "Your profile reflects a strategic, communication-driven orientation. A Natal Chart Analysis focused on Mercury and the third and ninth house would be particularly illuminating.",
+                earth: "Your profile indicates a preference for measurable, structured outcomes. An Electional Timing consultation would provide a concrete, actionable framework for your next significant decision."
+            };
 
-        auditResult.classList.remove('hidden');
-        resultTitle.textContent = "Our Recommendation";
-        resultTitle.style.color = 'var(--accent-gold)';
-        resultTitle.style.marginBottom = '0.5rem';
-        resultDesc.textContent = recommendations[element] || "";
+            auditResult.classList.remove('hidden');
+            resultTitle.textContent = "Our Recommendation";
+            resultTitle.style.color = 'var(--accent-gold)';
+            resultTitle.style.marginBottom = '0.5rem';
+            resultDesc.textContent = recommendations[element] || "";
 
-        auditBtn.textContent = "Recommendation Received";
-        auditBtn.style.backgroundColor = "transparent";
-        auditBtn.style.border = "1px solid var(--accent-gold)";
-        auditBtn.style.color = "var(--accent-gold)";
-        auditBtn.disabled = true;
-    });
+            auditBtn.textContent = "Recommendation Received";
+            auditBtn.style.backgroundColor = "transparent";
+            auditBtn.style.border = "1px solid var(--accent-gold)";
+            auditBtn.style.color = "var(--accent-gold)";
+            auditBtn.disabled = true;
+        });
+    }
 
     // 4. Metric Counter Animation
     const metrics = document.querySelectorAll('.metric-value');
@@ -218,9 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    metrics.forEach(metric => {
-        metricObserver.observe(metric);
-    });
+    if (metrics.length > 0) {
+        metrics.forEach(metric => {
+            metricObserver.observe(metric);
+        });
+    }
 
     // 5. Portfolio Carousel (Replaced by CSS Marquee)
 

@@ -1,37 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 0. Theme Toggle
-    const html = document.documentElement;
-    const toggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = toggleBtn.querySelector('.theme-icon');
 
-    const savedTheme = localStorage.getItem('astra-theme') || 'light';
-    applyTheme(savedTheme);
-
-    toggleBtn.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme') || 'light';
-        const next = current === 'light' ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('astra-theme', next);
-    });
-
-    function applyTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        themeIcon.textContent = theme === 'dark' ? '☀' : '☽';
-        // Update navbar JS-driven color
-        const navbar = document.getElementById('navbar');
-        if (theme === 'dark') {
-            navbar.style.background = 'rgba(6, 11, 19, 0.85)';
-        } else {
-            navbar.style.background = 'rgba(250, 250, 248, 0.85)';
-        }
-        // Re-tint existing stars
-        document.querySelectorAll('.star-particle').forEach(s => {
-            s.style.backgroundColor = theme === 'dark'
-                ? `rgba(255,255,255,${Math.random() * 0.5 + 0.1})`
-                : `rgba(184,136,42,${Math.random() * 0.4 + 0.1})`;
-        });
-    }
 
     
     // 1. Navbar Scroll Effect
@@ -131,13 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
             valid = showError('audit-name', 'Name may only contain letters, spaces, hyphens, or apostrophes.');
         } else { markValid('audit-name'); }
 
-        // Email — optional, but must be valid if provided
+        // Email — required
         const email = document.getElementById('audit-email').value.trim();
-        if (email) {
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-                valid = showError('audit-email', 'Please enter a valid email address (e.g. name@example.com).');
-            } else { markValid('audit-email'); }
-        }
+        if (!email) {
+            valid = showError('audit-email', 'Email address is required.');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+            valid = showError('audit-email', 'Please enter a valid email address (e.g. name@example.com).');
+        } else { markValid('audit-email'); }
 
         // Date of Birth — required, must be in the past
         const dob = document.getElementById('audit-dob').value;
@@ -258,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Basic Star Generation for Hero Background
     function createStars() {
         const body = document.body;
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         for(let i=0; i<40; i++) {
             let star = document.createElement('div');
             star.className = 'star-particle';
@@ -268,9 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = Math.random() * 2.5 + 'px';
             star.style.width = size;
             star.style.height = size;
-            star.style.backgroundColor = isDark
-                ? `rgba(255,255,255,${Math.random() * 0.5 + 0.1})`
-                : `rgba(184,136,42,${Math.random() * 0.4 + 0.1})`;
+            star.style.backgroundColor = `rgba(184,136,42,${Math.random() * 0.4 + 0.1})`;
             star.style.borderRadius = '50%';
             star.style.zIndex = '-1';
             star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite linear`;

@@ -59,10 +59,11 @@ model User {
 }
 
 model Testimony {
-  id        String   @id @default(cuid())
-  content   String
-  rating    Int      @default(5)
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  content    String
+  rating     Int      @default(5)
+  isApproved Boolean  @default(false)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
 }

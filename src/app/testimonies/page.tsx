@@ -7,6 +7,12 @@ export const dynamic = "force-dynamic";
 
 export default async function Testimonies() {
   const dynamicTestimonies = await prisma.testimony.findMany({
+    where: {
+      isApproved: true,
+      rating: {
+        gte: 4,
+      },
+    },
     include: {
       user: true,
     },

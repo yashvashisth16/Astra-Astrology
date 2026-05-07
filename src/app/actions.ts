@@ -46,3 +46,22 @@ export async function submitTestimony(data: { content: string; rating: number })
 
   return { success: true };
 }
+
+export async function toggleTestimonyApproval(testimonyId: string, isApproved: boolean) {
+  const session = await getServerSession(authOptions);
+
+  // Simple admin check: Only the site owner can approve
+  if (!session || !session.user || session.user.email !== "yashvashisth70@gmail.com") {
+    throw new Error("Unauthorized");
+  }
+
+  await prisma.testimony.update({
+    where: { id: testimonyId },
+    data: { isApproved },
+  });
+
+  revalidatePath("/admin/testimonies");
+  revalidatePath("/testimonies");
+  
+  return { success: true };
+}

@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"], 
 const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-cinzel" });
 
 export const metadata: Metadata = {
-  title: "Astra | Astrological Consulting",
-  description: "Astra — Expert astrological consulting for career, relationships, and strategic life decisions.",
+  title: "Parasharr Dynasty Astrology | By Dr Priti",
+  description: "Parasharr Dynasty Astrology — Expert astrological consulting by Dr Priti for career, relationships, and strategic life decisions.",
 };
 
 export default function RootLayout({

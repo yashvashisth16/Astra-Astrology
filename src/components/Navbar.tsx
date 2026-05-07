@@ -23,7 +23,7 @@ export default function Navbar() {
       boxShadow: isScrolled ? "0 2px 20px rgba(0, 0, 0, 0.08)" : "none",
     }}>
       <div className="container navbar-container">
-        <Link href="/" className="logo">ASTRA</Link>
+        <Link href="/" className="logo" style={{ lineHeight: "1.2", display: "inline-block" }}>Parasharr Dynasty Astrology <br /><span style={{ fontSize: "0.55em", opacity: 0.9, display: "block", marginTop: "-2px" }}>by Dr Priti</span></Link>
         <div className="nav-right">
           {session ? (
             <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>

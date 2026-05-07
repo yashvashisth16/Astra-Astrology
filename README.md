@@ -1,4 +1,4 @@
-#  Astra — Astrological Consulting Website
+#  Parasharr Dynasty Astrology
 
 A premium, full-stack astrological consulting platform built with **Next.js**, React, TypeScript, and **Auth.js** (Google Login). Designed with a custom light yellow aesthetic, smooth animations, and a fully functional authenticated consultation booking system.
 

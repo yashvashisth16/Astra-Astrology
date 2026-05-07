@@ -8,7 +8,7 @@ export default function LoginPage() {
       <div className="audit-card reveal scale-up active" style={{ maxWidth: "450px", width: "100%", padding: "3rem 2rem", textAlign: "center" }}>
         <h2 className="hero-headline" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Welcome Back</h2>
         <p className="hero-subheading" style={{ fontSize: "1rem", marginBottom: "2.5rem" }}>
-          Sign in to Astra to manage your consultations, access courses, and update your profile.
+          Sign in to Parasharr Dynasty Astrology to manage your consultations, access courses, and update your profile.
         </p>
         
         <button 

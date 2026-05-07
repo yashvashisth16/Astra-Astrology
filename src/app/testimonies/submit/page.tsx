@@ -24,7 +24,7 @@ export default function SubmitTestimonyPage() {
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
           <h2 className="hero-headline" style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>Share Your Experience</h2>
           <p className="hero-subheading" style={{ fontSize: "1rem" }}>
-            We'd love to hear how your consultation with Astra has impacted your journey.
+            We'd love to hear how your consultation with Dr Priti has impacted your journey.
           </p>
         </div>
         

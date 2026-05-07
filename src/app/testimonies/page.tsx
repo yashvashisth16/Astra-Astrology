@@ -3,6 +3,7 @@ import Link from "next/link";
 import VideoPlayer from "@/components/VideoPlayer";
 import prisma from "@/lib/prisma";
 
+
 export const dynamic = "force-dynamic";
 
 export default async function Testimonies() {
@@ -43,7 +44,7 @@ export default async function Testimonies() {
             </Link>
           </div>
           <div className="testimonies-grid">
-            {dynamicTestimonies.map((testimony, index) => (
+            {dynamicTestimonies.map((testimony: any, index: number) => (
               <div key={testimony.id} className={`testimony-card text-card reveal scale-up delay-${(index % 7) + 1}`}>
                 <div className="text-testimony-content" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
                   <div>

@@ -30,7 +30,7 @@ export default async function AdminTestimonies() {
       </p>
 
       <div className="testimonies-grid">
-        {testimonies.map((testimony) => (
+        {testimonies.map((testimony: any) => (
           <AdminTestimonyCard key={testimony.id} testimony={testimony} />
         ))}
         {testimonies.length === 0 && (

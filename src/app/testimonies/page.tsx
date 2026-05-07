@@ -1,8 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import VideoPlayer from "@/components/VideoPlayer";
+import prisma from "@/lib/prisma";
 
-export default function Testimonies() {
+export const dynamic = "force-dynamic";
+
+export default async function Testimonies() {
+  const dynamicTestimonies = await prisma.testimony.findMany({
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
   return (
     <>
       {/* Hero */}
@@ -25,6 +37,22 @@ export default function Testimonies() {
             </Link>
           </div>
           <div className="testimonies-grid">
+            {dynamicTestimonies.map((testimony, index) => (
+              <div key={testimony.id} className={`testimony-card text-card reveal scale-up delay-${(index % 7) + 1}`}>
+                <div className="text-testimony-content" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ color: "var(--light-accent)", marginBottom: "1rem", fontSize: "1.2rem" }}>
+                      {"★".repeat(testimony.rating)}{"☆".repeat(5 - testimony.rating)}
+                    </div>
+                    <p className="quote" style={{ fontSize: "1.1rem", fontStyle: "italic", lineHeight: "1.6" }}>"{testimony.content}"</p>
+                  </div>
+                  <p className="author" style={{ marginTop: "1.5rem", fontWeight: "bold", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1rem" }}>
+                    - {testimony.user.name || "Anonymous Client"}
+                  </p>
+                </div>
+              </div>
+            ))}
+            
             <div className="testimony-card reveal scale-up delay-1">
               <img src="/testinomy/WhatsApp Image 2026-05-06 at 7.20.22 PM.jpeg" alt="Client testimony screenshot" className="testimony-img" />
             </div>

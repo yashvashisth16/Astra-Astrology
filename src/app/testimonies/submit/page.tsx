@@ -2,20 +2,35 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { submitTestimony } from "@/app/actions";
 
 export default function SubmitTestimonyPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  
+  const [content, setContent] = useState("");
+  const [rating, setRating] = useState(5);
+  const [loading, setLoading] = useState(false);
 
   if (status === "unauthenticated") {
     router.push("/login");
     return null;
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for your testimony! It has been submitted for review.");
-    router.push("/testimonies");
+    setLoading(true);
+    try {
+      await submitTestimony({ content, rating });
+      alert("Thank you for your testimony! It has been submitted.");
+      router.push("/testimonies");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to submit testimony. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -31,15 +46,37 @@ export default function SubmitTestimonyPage() {
         <form className="audit-form" onSubmit={handleSubmit} style={{ display: "block" }}>
           <div className="audit-group">
             <label htmlFor="testimony">Your Story <span className="required-star">*</span></label>
-            <textarea id="testimony" className="form-input" style={{ minHeight: "150px", resize: "vertical" }} placeholder="Write your experience here..." required></textarea>
-          </div>
-          
-          <div className="audit-group" style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "1rem" }}>
-            <input type="checkbox" id="anonymous" style={{ accentColor: "var(--light-accent)", width: "18px", height: "18px" }} />
-            <label htmlFor="anonymous" style={{ marginBottom: "0", fontSize: "0.9rem", color: "var(--light-text)" }}>Keep my testimony anonymous</label>
+            <textarea 
+              id="testimony" 
+              className="form-input" 
+              style={{ minHeight: "150px", resize: "vertical" }} 
+              placeholder="Write your experience here..." 
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required 
+            />
           </div>
 
-          <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: "1.5rem" }}>Submit Testimony</button>
+          <div className="audit-group" style={{ marginTop: "1rem" }}>
+            <label htmlFor="rating">Rating <span className="required-star">*</span></label>
+            <select 
+              id="rating" 
+              className="form-input" 
+              value={rating} 
+              onChange={(e) => setRating(parseInt(e.target.value))}
+              required
+            >
+              <option value="5">5 Stars - Excellent</option>
+              <option value="4">4 Stars - Very Good</option>
+              <option value="3">3 Stars - Good</option>
+              <option value="2">2 Stars - Fair</option>
+              <option value="1">1 Star - Poor</option>
+            </select>
+          </div>
+          
+          <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: "1.5rem" }} disabled={loading}>
+            {loading ? "Submitting..." : "Submit Testimony"}
+          </button>
         </form>
       </div>
     </div>

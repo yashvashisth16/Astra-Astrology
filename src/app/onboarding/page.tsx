@@ -2,22 +2,40 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { saveUserProfile } from "@/app/actions";
 
 export default function OnboardingPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   if (status === "unauthenticated") {
     router.push("/login");
     return null;
   }
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here we would normally save to the database (Supabase/Postgres)
-    // For now, we simulate saving and redirecting to home
-    alert("Astrological Profile Saved Successfully!");
-    router.push("/");
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      dob: formData.get("dob") as string,
+      birthTime: formData.get("time") as string,
+      birthLocation: `${formData.get("city")}, ${formData.get("state")}, ${formData.get("country")}`,
+    };
+
+    try {
+      await saveUserProfile(data);
+      alert("Astrological Profile Saved Successfully!");
+      router.push("/");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to save profile.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,11 +53,11 @@ export default function OnboardingPage() {
             <div className="audit-row">
               <div className="audit-group">
                 <label htmlFor="dob">Date of Birth <span className="required-star">*</span></label>
-                <input type="date" id="dob" className="form-input" required />
+                <input type="date" id="dob" name="dob" className="form-input" required />
               </div>
               <div className="audit-group">
                 <label htmlFor="time">Time of Birth <span className="required-star">*</span></label>
-                <input type="time" id="time" className="form-input" required />
+                <input type="time" id="time" name="time" className="form-input" required />
               </div>
             </div>
 
@@ -47,19 +65,21 @@ export default function OnboardingPage() {
               <label>Place of Birth <span className="required-star">*</span></label>
               <div className="audit-row audit-row-3">
                 <div className="audit-group audit-group-nested">
-                  <input type="text" id="city" className="form-input" placeholder="City" required />
+                  <input type="text" id="city" name="city" className="form-input" placeholder="City" required />
                 </div>
                 <div className="audit-group audit-group-nested">
-                  <input type="text" id="state" className="form-input" placeholder="State / Province" required />
+                  <input type="text" id="state" name="state" className="form-input" placeholder="State / Province" required />
                 </div>
                 <div className="audit-group audit-group-nested">
-                  <input type="text" id="country" className="form-input" placeholder="Country" required />
+                  <input type="text" id="country" name="country" className="form-input" placeholder="Country" required />
                 </div>
               </div>
             </div>
           </div>
 
-          <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: "1.5rem" }}>Save My Profile</button>
+          <button type="submit" className="btn-primary" style={{ width: "100%", marginTop: "1.5rem" }} disabled={loading}>
+            {loading ? "Saving..." : "Save My Profile"}
+          </button>
         </form>
       </div>
     </div>

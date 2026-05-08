@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import VideoPlayer from "@/components/VideoPlayer";
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
 
 export const dynamic = "force-dynamic";

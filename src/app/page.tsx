@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ConsultationBookingForm from "@/components/ConsultationBookingForm";
 import AnimatedStatsCounters from "@/components/AnimatedStatsCounters";
+import { prisma } from "@/lib/prisma";
 
 export default function Home() {
   return (

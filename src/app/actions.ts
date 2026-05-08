@@ -27,17 +27,20 @@ export async function saveUserProfile(data: { dob: string; birthTime: string; bi
 export async function submitTestimony(data: { content: string; rating: number }) {
   const session = await getServerSession(authOptions);
 
-  // @ts-ignore
-  if (!session || !session.user || !session.user.id) {
+  if (!session || !session.user || !session.user.email) {
     throw new Error("You must be logged in to submit a case study.");
+  }
+
+  const dbUser = await prisma.user.findUnique({ where: { email: session.user.email } });
+  if (!dbUser) {
+    throw new Error("Database user not found.");
   }
 
   await prisma.testimony.create({
     data: {
       content: data.content,
       rating: data.rating,
-      // @ts-ignore
-      userId: session.user.id,
+      userId: dbUser.id,
     },
   });
 

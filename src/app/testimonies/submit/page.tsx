@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { submitTestimony } from "@/app/actions";
 
 export default function SubmitTestimonyPage() {
@@ -13,8 +13,13 @@ export default function SubmitTestimonyPage() {
   const [rating, setRating] = useState(5);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [status, router]);
+
   if (status === "unauthenticated") {
-    router.push("/login");
     return null;
   }
 

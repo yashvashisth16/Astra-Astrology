@@ -58,6 +58,7 @@ export default function Navbar() {
             <li><Link href="/#services" className="nav-link" onClick={() => setIsMenuOpen(false)}>Services</Link></li>
             <li><Link href="/#process" className="nav-link" onClick={() => setIsMenuOpen(false)}>Our Process</Link></li>
             <li><Link href="/testimonies" className="nav-link" onClick={() => setIsMenuOpen(false)}>Case Studies</Link></li>
+            <li><Link href="/courses" className="nav-link" onClick={() => setIsMenuOpen(false)}>Courses</Link></li>
             
             {/* Mobile Auth Controls inside Dropdown */}
             <li className="mobile-cta-item">

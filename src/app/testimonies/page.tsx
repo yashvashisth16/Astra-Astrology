@@ -94,6 +94,7 @@ export default async function Testimonies() {
           <h2 className="section-title reveal">Video Testimonies</h2>
           <div className="video-grid">
             <VideoPlayer src="/testinomy/WhatsApp Video 2026-05-07 at 6.30.41 AM.mp4" delay={1} />
+            <VideoPlayer src="/testinomy/WhatsApp Video 2026-05-08 at 3.18.14 PM.mp4" delay={2} />
           </div>
         </div>
       </section>

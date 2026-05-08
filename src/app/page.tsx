@@ -3,7 +3,14 @@ import ConsultationBookingForm from "@/components/ConsultationBookingForm";
 import AnimatedStatsCounters from "@/components/AnimatedStatsCounters";
 import { prisma } from "@/lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const recentTestimonies = await prisma.testimony.findMany({
+    where: { isApproved: true, rating: { gte: 4 } },
+    orderBy: { createdAt: "desc" },
+    take: 5,
+    include: { user: true }
+  });
+
   return (
     <>
       {/* Hero */}
@@ -91,15 +98,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Marquee */}
-      <section className="marquee-section">
+      {/* Marquee - Zodiac Signs */}
+      <section className="marquee-section" style={{ borderBottom: "none" }}>
         <div className="marquee-container">
           <div className="marquee-content">
-            <span>♈ Aries</span><span>♉ Taurus</span><span>♊ Gemini</span><span>♋ Cancer</span><span>♌ Leo</span><span>♍ Virgo</span><span>♎ Libra</span><span>♏ Scorpio</span><span>♐ Sagittarius</span><span>♑ Capricorn</span><span>♒ Aquarius</span><span>♓ Pisces</span>
-            <span>♈ Aries</span><span>♉ Taurus</span><span>♊ Gemini</span><span>♋ Cancer</span><span>♌ Leo</span><span>♍ Virgo</span><span>♎ Libra</span><span>♏ Scorpio</span><span>♐ Sagittarius</span><span>♑ Capricorn</span><span>♒ Aquarius</span><span>♓ Pisces</span>
+            <span>✦ ♈ ARIES ✦</span>
+            <span>♉ TAURUS ✦</span>
+            <span>♊ GEMINI ✦</span>
+            <span>♋ CANCER ✦</span>
+            <span>♌ LEO ✦</span>
+            <span>♍ VIRGO ✦</span>
+            <span>♎ LIBRA ✦</span>
+            <span>♏ SCORPIO ✦</span>
+            <span>♐ SAGITTARIUS ✦</span>
+            <span>♑ CAPRICORN ✦</span>
+            <span>♒ AQUARIUS ✦</span>
+            <span>♓ PISCES ✦</span>
+            
+            {/* Duplicate for infinite scroll */}
+            <span>♈ ARIES ✦</span>
+            <span>♉ TAURUS ✦</span>
+            <span>♊ GEMINI ✦</span>
+            <span>♋ CANCER ✦</span>
+            <span>♌ LEO ✦</span>
+            <span>♍ VIRGO ✦</span>
+            <span>♎ LIBRA ✦</span>
+            <span>♏ SCORPIO ✦</span>
+            <span>♐ SAGITTARIUS ✦</span>
+            <span>♑ CAPRICORN ✦</span>
+            <span>♒ AQUARIUS ✦</span>
+            <span>♓ PISCES ✦</span>
           </div>
         </div>
       </section>
+
+      {/* Marquee - Recent Testimonies */}
+      {recentTestimonies.length > 0 && (
+        <section className="marquee-section" style={{ paddingTop: 0 }}>
+          <div className="marquee-container">
+            <div className="marquee-content" style={{ animationDuration: "40s", animationDirection: "reverse" }}>
+              {recentTestimonies.map(t => (
+                <span key={t.id} style={{ fontFamily: "var(--font-body)", fontStyle: "italic", textTransform: "none", fontSize: "1.1rem" }}>
+                  "{t.content.substring(0, 80)}..." - {t.user.name || "Client"}
+                </span>
+              ))}
+              {/* Duplicate for infinite scroll illusion */}
+              {recentTestimonies.map(t => (
+                <span key={t.id + "-dup"} style={{ fontFamily: "var(--font-body)", fontStyle: "italic", textTransform: "none", fontSize: "1.1rem" }}>
+                  "{t.content.substring(0, 80)}..." - {t.user.name || "Client"}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Audit/Quiz */}
       <section id="audit-teaser" className="section audit-teaser">

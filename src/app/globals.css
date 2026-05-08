@@ -1092,12 +1092,14 @@ body::before {
     height: auto;
     display: block;
     object-fit: cover;
+    object-position: top;
     border-bottom: 2px solid var(--accent-gold);
 }
 
 .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2.5rem;
     margin-top: 3rem;
 }
@@ -1137,6 +1139,7 @@ body::before {
 
 .testimony-video {
     width: 100%;
+    height: 450px;
     display: block;
     object-fit: cover;
     background: #000;
@@ -1175,4 +1178,142 @@ body::before {
 .control-btn:hover {
     background: var(--accent-gold);
     transform: scale(1.1);
+}
+
+/* =========================================
+   COURSES PAGE - LIGHT THEME MATCH
+   ========================================= */
+
+/* The entire page background */
+.courses-page-wrapper {
+  background-color: #f6f7b5; /* Matches your light yellow theme */
+  min-height: 100vh;
+  padding: 5rem 2rem;
+  color: #2b2b2b; /* Dark text for readability */
+}
+
+/* Page Header */
+.courses-header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.courses-main-title {
+  font-family: 'Cinzel', serif; /* Your premium font */
+  font-size: 3rem;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.courses-subtitle {
+  font-size: 1.1rem;
+  color: #5c4e3a; /* Soft brown */
+}
+
+/* Grid Layout */
+.courses-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   COURSE CARD STYLING
+   ========================================= */
+
+.theme-course-card {
+  background-color: #ffffff; /* White card makes the yellow background pop */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft premium shadow */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e8e3c8;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(181, 133, 42, 0.15); /* Gold tinted shadow on hover */
+}
+
+/* Thumbnail Placeholder */
+.theme-course-image {
+  height: 200px;
+  background-color: #1f1f1f; /* Dark background for thumbnail contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+}
+
+/* Card Content Area */
+.theme-course-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.theme-course-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.theme-course-description {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Pushes footer to the bottom */
+}
+
+/* Stars & Enrolled */
+.theme-course-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b5852a; /* Gold text */
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* Footer (Price & Button) */
+.theme-course-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-course-price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+/* Matches your exact "Schedule a Consultation" button */
+.theme-btn-enroll {
+  background-color: #b5852a; /* Exact gold/brown from your screenshot */
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.theme-btn-enroll:hover {
+  background-color: #966f22; /* Darker gold on hover */
 }

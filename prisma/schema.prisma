@@ -66,4 +66,34 @@ model Testimony {
   userId     String
   user       User     @relation(fields: [userId], references: [id])
   createdAt  DateTime @default(now())
+} 
+
+// --- LMS / COURSES TABLES ---
+
+model Course {
+  id          String   @id @default(cuid()) // Automatically generates a unique secure ID
+  title       String
+  description String   @db.Text             // @db.Text allows for long paragraphs
+  price       Int      // Best practice: Store prices in smallest currency unit (e.g., Paise or Cents) to avoid math errors
+  coverImage  String?  // The "?" makes this field OPTIONAL
+  
+  // Relation: One Course can have many Lessons
+  lessons     Lesson[] 
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id            String   @id @default(cuid())
+  title         String
+  videoUrl      String?  // The link to the Vimeo/Mux video
+  isFreePreview Boolean  @default(false) // By default, videos are locked (false)
+  lessonNumber  Int      // Keeps your lessons in order (1, 2, 3...)
+
+  // Relation: This Lesson belongs to a specific Course
+  courseId      String
+  course        Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
 }

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import ConsultationBookingForm from "@/components/ConsultationBookingForm";
 import AnimatedStatsCounters from "@/components/AnimatedStatsCounters";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { prisma } from "@/lib/prisma";
 
 export default async function Home() {
   const recentTestimonies = await prisma.testimony.findMany({
     where: { isApproved: true, rating: { gte: 4 } },
     orderBy: { createdAt: "desc" },
-    take: 5,
+    take: 12,
     include: { user: true }
   });
 
@@ -114,7 +115,7 @@ export default async function Home() {
             <span>♑ CAPRICORN ✦</span>
             <span>♒ AQUARIUS ✦</span>
             <span>♓ PISCES ✦</span>
-            
+
             {/* Duplicate for infinite scroll */}
             <span>♈ ARIES ✦</span>
             <span>♉ TAURUS ✦</span>
@@ -132,27 +133,18 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Marquee - Recent Testimonies */}
-      {recentTestimonies.length > 0 && (
-        <section className="marquee-section" style={{ paddingTop: 0 }}>
-          <div className="marquee-container">
-            <div className="marquee-content" style={{ animationDuration: "40s", animationDirection: "reverse" }}>
-              {recentTestimonies.map(t => (
-                <span key={t.id} style={{ fontFamily: "var(--font-body)", fontStyle: "italic", textTransform: "none", fontSize: "1.1rem" }}>
-                  "{t.content.substring(0, 80)}..." - {t.user.name || "Client"}
-                </span>
-              ))}
-              {/* Duplicate for infinite scroll illusion */}
-              {recentTestimonies.map(t => (
-                <span key={t.id + "-dup"} style={{ fontFamily: "var(--font-body)", fontStyle: "italic", textTransform: "none", fontSize: "1.1rem" }}>
-                  "{t.content.substring(0, 80)}..." - {t.user.name || "Client"}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
+      {/* Testimonies Carousel */}
+      <section className="section testimonies">
+        <div className="container">
+          <h2 className="section-title reveal active">Client Stories</h2>
+          <p className="hero-subheading reveal active" style={{ marginTop: "-2rem", marginBottom: "3.5rem", textAlign: "center" }}>
+            Real experiences from our astrological consultations.
+          </p>
+        </div>
+        <div className="container">
+          <TestimonialCarousel testimonies={recentTestimonies} />
+        </div>
+      </section>
       {/* Audit/Quiz */}
       <section id="audit-teaser" className="section audit-teaser">
         <div className="container">

@@ -76,7 +76,9 @@ model Course {
   description String   @db.Text             // @db.Text allows for long paragraphs
   price       Int      // Best practice: Store prices in smallest currency unit (e.g., Paise or Cents) to avoid math errors
   coverImage  String?  // The "?" makes this field OPTIONAL
-  
+  rating      Float    @default(4.60)
+  enrolledStudents  Int      @default(137)
+
   // Relation: One Course can have many Lessons
   lessons     Lesson[] 
   

@@ -5,7 +5,7 @@ import CourseCard from '@/components/CourseCard';
 const MOCK_COURSES =[
   {
     id: "1",
-    title: "Vedic Astrology 101",
+    title: "KP astrology Marraige prediction course",
     description: "Master the foundational principles of reading natal charts, planetary placements, and houses.",
     rating: 4.9,
     enrolled: 1250,
@@ -38,6 +38,53 @@ const MOCK_COURSES =[
     enrolled: 630,
     price: "₹18,000",
     image: "⏳"
+  },
+
+{
+    id: "6",
+    title: "Jamini Astrology",
+    description: "Learn how to accurately predict timing of life events using advanced planetary transit techniques.",
+    rating: 4.8,
+    enrolled: 840,
+    price: "₹15,000",
+    image: "✨"
+  },
+
+  {
+    id: "7",
+    title: "Spritual course",
+    description: "Learn how to accurately predict timing of life events using advanced planetary transit techniques.",
+    rating: 4.8,
+    enrolled: 840,
+    price: "₹15,000",
+    image: "✨"
+  }, 
+  {
+    id:"8",
+    title: "Vedic astrology",
+    description: "Learn how to accurately predict timing of life events using advanced planetary transit techniques.",
+    rating: 4.8,
+    enrolled: 840,
+    price: "₹15,000",
+    image: "✨"
+  },
+  {
+    id:"9",
+    title: "Nadi Astrology",
+    description: "Learn how to accurately predict timing of life events using advanced planetary transit techniques.",
+    rating: 4.8,
+    enrolled: 840,
+    price: "₹15,000",
+    image: "✨"
+  }, 
+  {
+    id:"10",
+    title:"How to Read Horascope",
+    description:"Learn how to accurately predict timing of life events using advanced planetary transit techniques.",
+    rating: 4.8,
+    enrolled: 840,
+    price: "₹15,000",
+    image: "✨"
   }
 ];
 

@@ -1186,38 +1186,42 @@ body::before {
 
 /* The entire page background */
 .courses-page-wrapper {
-  background-color: #f6f7b5; /* Matches your light yellow theme */
-  min-height: 100vh;
-  padding: 5rem 2rem;
-  color: #2b2b2b; /* Dark text for readability */
+    background-color: #f6f7b5;
+    /* Matches your light yellow theme */
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    color: #2b2b2b;
+    /* Dark text for readability */
 }
 
 /* Page Header */
 .courses-header-section {
-  text-align: center;
-  margin-bottom: 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
 .courses-main-title {
-  font-family: 'Cinzel', serif; /* Your premium font */
-  font-size: 3rem;
-  color: #1a1a1a;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
+    font-family: 'Cinzel', serif;
+    /* Your premium font */
+    font-size: 3rem;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
 }
 
 .courses-subtitle {
-  font-size: 1.1rem;
-  color: #5c4e3a; /* Soft brown */
+    font-size: 1.1rem;
+    color: #5c4e3a;
+    /* Soft brown */
 }
 
 /* Grid Layout */
 .courses-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* =========================================
@@ -1225,95 +1229,213 @@ body::before {
    ========================================= */
 
 .theme-course-card {
-  background-color: #ffffff; /* White card makes the yellow background pop */
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft premium shadow */
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e8e3c8;
-  display: flex;
-  flex-direction: column;
+    background-color: #ffffff;
+    /* White card makes the yellow background pop */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Soft premium shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e8e3c8;
+    display: flex;
+    flex-direction: column;
 }
 
 .theme-course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(181, 133, 42, 0.15); /* Gold tinted shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(181, 133, 42, 0.15);
+    /* Gold tinted shadow on hover */
 }
 
 /* Thumbnail Placeholder */
 .theme-course-image {
-  height: 200px;
-  background-color: #1f1f1f; /* Dark background for thumbnail contrast */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 200px;
+    background-color: #1f1f1f;
+    /* Dark background for thumbnail contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .placeholder-icon {
-  font-size: 4rem;
+    font-size: 4rem;
 }
 
 /* Card Content Area */
 .theme-course-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .theme-course-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
 }
 
 .theme-course-description {
-  font-size: 0.9rem;
-  color: #666666;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  flex-grow: 1; /* Pushes footer to the bottom */
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    /* Pushes footer to the bottom */
 }
 
 /* Stars & Enrolled */
 .theme-course-stats {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #b5852a; /* Gold text */
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #b5852a;
+    /* Gold text */
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
 }
 
 /* Footer (Price & Button) */
 .theme-course-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .theme-course-price {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #1a1a1a;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a1a1a;
 }
 
 /* Matches your exact "Schedule a Consultation" button */
 .theme-btn-enroll {
-  background-color: #b5852a; /* Exact gold/brown from your screenshot */
-  color: #ffffff;
-  border: none;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    background-color: #b5852a;
+    /* Exact gold/brown from your screenshot */
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .theme-btn-enroll:hover {
-  background-color: #966f22; /* Darker gold on hover */
+    background-color: #966f22;
+    /* Darker gold on hover */
+}
+
+/*TESTIMONIALS MARQUEE */
+
+.testimonies-section {
+    padding: 5rem 0;
+    /* No side padding so it stretches edge-to-edge */
+    max-width: 100vw;
+    overflow: hidden;
+    /* Prevents a horizontal scrollbar on the page */
+}
+
+/* The Marquee Wrapper */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+
+/* The Scrolling Track */
+.marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    /* 40s is the speed. Change it to make it faster/slower */
+    animation: scrollMarquee 40s linear infinite;
+}
+
+/* PAUSE ON HOVER! */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    /* Slides exactly 50% (the first set of cards) then seamlessly loops */
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/*   THE PREMIUM TESTIMONY CAROUSEL CARD */
+
+.testimony-carousel-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimony-carousel-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Old marquee card styles removed */
+
+/* Header & Divider */
+.stars-header {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #f0ebe1;
+    /* Subtle line matching your screenshot */
+}
+
+.stars {
+    color: #b5852a;
+    /* Gold Stars */
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+}
+
+/* The Body Text */
+.testimony-content {
+    font-size: 1rem;
+    color: #4a4a4a;
+    line-height: 1.7;
+    font-style: italic;
+    flex-grow: 1;
+    /* Pushes the author name to the bottom */
+    margin-bottom: 2rem;
+}
+
+/* Author & Gold Diamond */
+.testimony-author {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* The Gold Diamond Bullet (✦) */
+.testimony-author::before {
+    content: "✦";
+    color: #b5852a;
+    font-size: 1.2rem;
 }

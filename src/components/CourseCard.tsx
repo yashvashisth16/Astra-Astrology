@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 // This tells TypeScript exactly what data to expect
 interface CourseProps {
     course: {
@@ -9,6 +9,7 @@ interface CourseProps {
         enrolled: number;
         price: string;
         image: string;
+        id:string;
     };
 }
 
@@ -35,7 +36,7 @@ export default function CourseCard({ course }: CourseProps) {
                 {/* 4. Price & Enroll Button */}
                 <div className="theme-course-footer">
                     <span className="theme-course-price">{course.price}</span>
-                    <button className="theme-btn-enroll">Enroll Now</button>
+                    <Link href={`/courses/${course.id}`} className="theme-btn-enroll">Enroll Now</Link>
                 </div>
             </div>
 

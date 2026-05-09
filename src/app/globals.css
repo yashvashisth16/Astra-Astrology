@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Global Variables & Reset
-   ========================================================================== */
+/* Global Variables & Reset */
 :root {
     /* Color Palette — Light Theme */
     --bg-dark: #fafaf8;
@@ -80,9 +78,7 @@ ul {
     list-style: none;
 }
 
-/* ==========================================================================
-   Buttons & Badges
-   ========================================================================== */
+/*Buttons & Badges */
 .btn-primary {
     display: inline-block;
     background-color: var(--accent-gold);
@@ -119,9 +115,7 @@ ul {
     transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   Starry Background Animation
-   ========================================================================== */
+/* Starry Background Animation */
 #stars,
 #stars2,
 #stars3 {
@@ -149,9 +143,7 @@ body::before {
     z-index: -2;
 }
 
-/* ==========================================================================
-   Navbar
-   ========================================================================== */
+/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -221,9 +213,7 @@ body::before {
     display: none;
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
+/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -283,9 +273,7 @@ body::before {
     margin: 0 0.5rem;
 }
 
-/* ==========================================================================
-   Sections General
-   ========================================================================== */
+/* Sections General */
 .section {
     padding: 6rem 0;
 }
@@ -297,9 +285,7 @@ body::before {
     color: var(--accent-gold);
 }
 
-/* ==========================================================================
-   Services Grid
-   ========================================================================== */
+/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -424,9 +410,7 @@ body::before {
     top: 2px;
 }
 
-/* ==========================================================================
-   Marquee
-   ========================================================================== */
+/* Marquee */
 .marquee-section {
     padding: 2rem 0;
     background: var(--bg-card);
@@ -465,9 +449,7 @@ body::before {
     }
 }
 
-/* ==========================================================================
-   Audit Teaser
-   ========================================================================== */
+/*  Audit Teaser */
 .audit-teaser {
     background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
 }
@@ -648,9 +630,7 @@ body::before {
     display: none;
 }
 
-/* ==========================================================================
-   Process Timeline
-   ========================================================================== */
+/* Process Timeline */
 .timeline {
     max-width: 800px;
     margin: 0 auto;
@@ -711,9 +691,7 @@ body::before {
     color: var(--text-muted);
 }
 
-/* ==========================================================================
-   Outcomes
-   ========================================================================== */
+/* Outcomes */
 .outcomes {
     background: var(--bg-card);
     border-top: 1px solid var(--border-color);
@@ -748,9 +726,7 @@ body::before {
     margin-top: 0.5rem;
 }
 
-/* ==========================================================================
-   Portfolio / Testimonials Carousel
-   ========================================================================== */
+/* Portfolio / Testimonials Carousel */
 .portfolio-header {
     display: flex;
     justify-content: space-between;
@@ -840,9 +816,7 @@ body::before {
     color: var(--accent-gold);
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* Footer */
 .footer {
     background: var(--bg-dark);
     /* Dark footer for premium contrast on light page */
@@ -896,9 +870,7 @@ body::before {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/* ==========================================================================
-   Scroll Reveal Animations — Celestial Theme
-   ========================================================================== */
+/* Scroll Reveal Animations — Celestial Theme */
 
 /*
   Elements emerge from a golden cosmic haze, as if materialising from
@@ -1009,9 +981,7 @@ body::before {
     animation-delay: 0.46s;
 }
 
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
+/* Responsive */
 @media (max-width: 768px) {
     .nav-right .nav-cta {
         display: none;
@@ -1063,9 +1033,7 @@ body::before {
     }
 }
 
-/* ==========================================================================
-   Testimonies Page
-   ========================================================================== */
+/* Testimonies Page */
 .page-hero {
     padding-top: 180px;
     padding-bottom: 60px;
@@ -1180,9 +1148,8 @@ body::before {
     transform: scale(1.1);
 }
 
-/* =========================================
-   COURSES PAGE - LIGHT THEME MATCH
-   ========================================= */
+/*  
+   COURSES PAGE - LIGHT THEME MATCH */
 
 /* The entire page background */
 .courses-page-wrapper {
@@ -1224,9 +1191,7 @@ body::before {
     margin: 0 auto;
 }
 
-/* =========================================
-   COURSE CARD STYLING
-   ========================================= */
+/* COURSE CARD STYLING */
 
 .theme-course-card {
     background-color: #ffffff;
@@ -1440,185 +1405,311 @@ body::before {
     font-size: 1.2rem;
 }
 
-/* =========================================
-   COURSE DETAILS PAGE
-   ========================================= */
+/* COURSE DETAILS PAGE */
 
 .course-details-wrapper {
-  background-color: #f6f7b5; /* Matches your theme! */
-  min-height: 100vh;
-  padding: 10rem 2rem 4rem 2rem;
-  color: #1a1a1a;
-  max-width: 1200px;
-  margin: 0 auto;
+    background-color: #f6f7b5;
+    /* Matches your theme! */
+    min-height: 100vh;
+    padding: 10rem 2rem 4rem 2rem;
+    color: #1a1a1a;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* HERO SECTION */
 .course-hero {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
 }
 
 .badge {
-  background-color: #b5852a;
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    background-color: #b5852a;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: 2.8rem;
-  margin: 1.5rem 0;
-  line-height: 1.2;
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    margin: 1.5rem 0;
+    line-height: 1.2;
 }
 
 .hero-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-  margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 1.5rem;
 }
 
 .hero-stats {
-  display: flex;
-  gap: 2rem;
-  font-weight: 600;
-  color: #b5852a;
+    display: flex;
+    gap: 2rem;
+    font-weight: 600;
+    color: #b5852a;
 }
 
 /* CHECKOUT FLOATING CARD */
 .course-checkout-card {
-  background: white;
-  border-radius: 12px;
-  border: 1px solid #e8e3c8;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-  overflow: hidden;
-  height: max-content;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e8e3c8;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    height: max-content;
 }
 
 .checkout-image-placeholder {
-  height: 220px;
-  background-color: #1f1f1f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
+    height: 220px;
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
 }
 
 .checkout-content {
-  padding: 2rem;
-  text-align: center;
+    padding: 2rem;
+    text-align: center;
 }
 
 .checkout-price {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
 }
 
 .tax-note {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.5rem;
 }
 
 .btn-buy-now {
-  background-color: #b5852a;
-  color: white;
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  margin-bottom: 1rem;
+    background-color: #b5852a;
+    color: white;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 1rem;
 }
 
 .btn-buy-now:hover {
-  background-color: #966f22;
+    background-color: #966f22;
 }
 
 .guarantee {
-  font-size: 0.85rem;
-  color: #666;
+    font-size: 0.85rem;
+    color: #666;
 }
 
 /* INFO SECTIONS (Learning & Curriculum) */
 .course-info-section {
-  background: white;
-  padding: 3rem;
-  border-radius: 12px;
-  border: 1px solid #e8e3c8;
-  margin-bottom: 2rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid #e8e3c8;
+    margin-bottom: 2rem;
 }
 
 .course-info-section h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #f0ebe1;
-  padding-bottom: 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #f0ebe1;
+    padding-bottom: 1rem;
 }
 
 .learning-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
 .learning-item {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 .check {
-  color: #b5852a;
-  font-weight: bold;
-  font-size: 1.2rem;
+    color: #b5852a;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .curriculum-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .lesson-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background: #fdfbf7;
-  border: 1px solid #e8e3c8;
-  border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #fdfbf7;
+    border: 1px solid #e8e3c8;
+    border-radius: 8px;
 }
 
 .lesson-left {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-weight: 500;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 500;
 }
 
 .lesson-duration {
-  color: #888;
-  font-size: 0.9rem;
+    color: #888;
+    font-size: 0.9rem;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .course-hero {
-    grid-template-columns: 1fr;
-  }
-  .learning-grid {
-    grid-template-columns: 1fr;
-  }
+    .course-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ENROLLED COURSE PROGRESS BAR */
+
+.progress-section {
+    margin: 1.5rem 0;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 0.5rem;
+}
+
+/* The empty track */
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #e8e3c8;
+    /* Light cream */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* The filled progress */
+.progress-bar-fill {
+    height: 100%;
+    background-color: #b5852a;
+    /* Parasharr Gold */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+    /* Smooth sliding animation */
+}
+
+/* Divider between Dashboard and Store */
+.section-divider {
+    border: none;
+    border-top: 1px solid #d4ceb6;
+    margin: 4rem 0;
+}
+
+/* DASHBOARD HEADER & STATS */
+
+.dashboard-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    padding-top: 1rem;
+}
+
+.dashboard-user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-avatar-large {
+    width: 80px;
+    height: 80px;
+    background-color: #1f1f1f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #b5852a;
+    /* Gold ring */
+}
+
+.avatar-letter {
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'Cinzel', serif;
+}
+
+.dashboard-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-box {
+    background: white;
+    border: 1px solid #e8e3c8;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-family: 'Cinzel', serif;
+    color: #b5852a;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Make it stack nicely on mobile phones */
+@media (min-width: 768px) {
+    .dashboard-header-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dashboard-quick-stats {
+        display: flex;
+        /* Forces them in a row next to the name */
+    }
+
+    .stat-box {
+        min-width: 150px;
+    }
 }

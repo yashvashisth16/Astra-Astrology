@@ -24,7 +24,7 @@ export default function Navbar() {
     }}>
       <div className="container navbar-container">
         <Link href="/" className="logo" style={{ lineHeight: "1.2", display: "inline-block", fontSize: "clamp(1.1rem, 4vw, 1.75rem)" }}>
-          Parasharr Dynasty Astrology <br />
+          Parasharr Divine Astrology <br />
           <span style={{ fontSize: "0.55em", opacity: 0.9, display: "block", marginTop: "-2px" }}>by Dr Priti</span>
         </Link>
         <div className="nav-right" style={{ display: "flex", alignItems: "center" }}>

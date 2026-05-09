@@ -19,7 +19,7 @@ export default async function Home() {
         <div className="container hero-content">
           <h1 className="hero-headline reveal">Read the Stars. <span className="highlight">Shape Your Future.</span></h1>
           <p className="hero-subheading reveal delay-1">
-            Parasharr Dynasty Astrology provides precise, evidence-informed astrological analysis for individuals navigating career transitions, relationships, and major life decisions.
+            Parasharr Divine Astrology provides precise, evidence-informed astrological analysis for individuals navigating career transitions, relationships, and major life decisions.
           </p>
           <div className="hero-actions reveal delay-2">
             <Link href="#services" className="btn-outline hero-btn">View Services</Link>

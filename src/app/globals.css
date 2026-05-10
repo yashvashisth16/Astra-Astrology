@@ -1713,3 +1713,22 @@ body::before {
         min-width: 150px;
     }
 }
+
+/*   TOP RIGHT COURSE BADGE */
+
+.theme-badge-top-right {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #b5852a;
+    /* Parasharr Gold */
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}

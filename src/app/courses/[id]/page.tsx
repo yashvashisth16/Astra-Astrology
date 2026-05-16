@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+// 👇 You imported it perfectly! 👇
+import CourseCheckoutBox from '@/components/CourseCheckoutBox';
 
 // 1. Our "Fake Database" Dictionary
 const MOCK_DATABASE: Record<string, any> = {
@@ -77,14 +79,16 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
                     </div>
                 </div>
 
+                {/* 👇 HERE IS THE MAGIC FIX 👇 */}
                 <div className="course-checkout-card">
                     <div className="checkout-image-placeholder">🌌</div>
-                    <div className="checkout-content">
-                        <h2 className="checkout-price">{course.price}</h2>
-                        <p className="tax-note">Includes lifetime access & updates</p>
-                        <button className="btn-buy-now">Proceed to Payment</button>
-                        <p className="guarantee">🔒 Secure Checkout</p>
-                    </div>
+                    
+                    {/* We pass the data into our interactive Client Component */}
+                    <CourseCheckoutBox 
+                        courseId={courseId} 
+                        title={course.title} 
+                        displayPrice={course.price} 
+                    />
                 </div>
             </div>
 
@@ -116,4 +120,4 @@ export default async function CourseDetailsPage({ params }: { params: Promise<{ 
             </div>
         </main>
     );
-}   
+}

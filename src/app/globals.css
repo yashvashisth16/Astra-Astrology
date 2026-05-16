@@ -459,7 +459,7 @@ body::before {
     border: 1px solid var(--accent-gold);
     border-radius: var(--radius);
     padding: 3rem;
-    max-width: 600px;
+    max-width: var(--max-width);
     margin: 0 auto;
     text-align: center;
     box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
@@ -2111,5 +2111,178 @@ body::before {
   .form-row, .form-row.triple {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+}
+
+/* =========================================
+   REVIEW SCREEN (CONSULTATION)
+   ========================================= */
+
+.review-grid {
+  background: #fdfbf7;
+  border: 1px solid #e8e3c8;
+  border-radius: 8px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.review-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.review-item span {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.review-item p {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  margin: 0;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Edit Details Button */
+.btn-outline {
+  background: transparent;
+  border: 2px solid #b5852a;
+  color: #b5852a;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #fcf9f0;
+}
+
+/* Mobile fix for buttons */
+@media (max-width: 768px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+  .review-actions {
+    flex-direction: column-reverse; /* Puts Proceed on top, Edit on bottom */
+  }
+  .btn-outline, .btn-buy-now {
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   PRICING CARDS (CONSULTATION)
+   ========================================= */
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.package-card {
+  position: relative;
+  background: white;
+  border: 2px solid #e8e3c8;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover Effect */
+.package-card:hover {
+  border-color: #c9a84c;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(181, 133, 42, 0.1);
+}
+
+/* The Magic Selected State! */
+.package-card.selected {
+  border-color: #b5852a;
+  background-color: #fcf9f0;
+  box-shadow: 0 10px 25px rgba(181, 133, 42, 0.2);
+}
+
+.package-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a1a2e; /* Deep navy for contrast */
+  color: #c9a84c; /* Gold text */
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.package-card h3 {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.package-price {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #b5852a;
+  margin-bottom: 1rem;
+}
+
+.package-card p {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.package-radio {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.package-card.selected .package-radio {
+  color: #b5852a;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .package-grid {
+    grid-template-columns: 1fr;
   }
 }

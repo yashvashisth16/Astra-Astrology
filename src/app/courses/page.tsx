@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseCard from '@/components/CourseCard';
 import EnrolledCourseCard from '@/components/EnrolledCourseCard';
+import { getServerSession } from "next-auth"; // You added this perfectly!
 
 // 1. Mock Storefront Data (No hardcoded badges here!)
 const MOCK_STORE_COURSES = [
@@ -12,14 +13,20 @@ const MOCK_STORE_COURSES = [
 // 2. Mock Dashboard Data (Courses the user has already bought)
 const MOCK_ENROLLED_COURSES = [
   { id: "1", title: "KP Astrology ", image: "🌌", totalLessons: 12, completedLessons: 4 },
-  { id: "4", title: "Muhurta: Perfect Timing", image: "⏳", totalLessons: 8, completedLessons: 8 } // 100% complete!
+  { id: "4", title: "Muhurta: Perfect Timing", image: "⏳", totalLessons: 8, completedLessons: 8 }
 ];
 
-export default function CoursesPage() {
-  const isLoggedIn = false;
-  const userName = "Cosmic Student";
+// 👇 1. ADDED 'async' HERE 👇
+export default async function CoursesPage() {
 
-  //  THE DYNAMIC ALGORITHM: Find the highest enrolled number in the list
+  // 👇 2. FETCH THE REAL SESSION FROM GOOGLE 👇
+  const session = await getServerSession();
+
+  // 👇 3. USE THE REAL DATA! 👇
+  const isLoggedIn = session ? true : false;
+  const userName = session?.user?.name || "Cosmic Student";
+
+  // THE DYNAMIC ALGORITHM: Find the highest enrolled number in the list
   const highestEnrolled = Math.max(...MOCK_STORE_COURSES.map(c => c.enrolled));
 
   return (

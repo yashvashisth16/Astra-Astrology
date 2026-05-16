@@ -4,19 +4,19 @@ import EnrolledCourseCard from '@/components/EnrolledCourseCard';
 
 // 1. Mock Storefront Data (No hardcoded badges here!)
 const MOCK_STORE_COURSES = [
-  { id: "1", title: "Vedic Astrology 101", description: "Master the foundational principles...", rating: 4.9, enrolled: 1250, price: "₹12,000", image: "🌌" },
+  { id: "1", title: "KP Astrology ", description: "Master the foundational principles...", rating: 4.9, enrolled: 1250, price: "₹12,000", image: "🌌" },
   { id: "2", title: "Predictive Mastery", description: "Learn timing of life events...", rating: 4.8, enrolled: 840, price: "₹15,000", image: "✨" },
-  { id: "3", title: "Synastry & Compatibility", description: "Deep dive into chart matching...", rating: 4.9, enrolled: 2105, price: "₹14,500", image: "🤍" }
+  { id: "3", title: "Synastry & Compatibility", description: "Deep dive into chart matching...", rating: 4.9, enrolled: 105, price: "₹14,500", image: "🤍" }
 ];
 
 // 2. Mock Dashboard Data (Courses the user has already bought)
 const MOCK_ENROLLED_COURSES = [
-  { id: "1", title: "Vedic Astrology 101", image: "🌌", totalLessons: 12, completedLessons: 4 },
+  { id: "1", title: "KP Astrology ", image: "🌌", totalLessons: 12, completedLessons: 4 },
   { id: "4", title: "Muhurta: Perfect Timing", image: "⏳", totalLessons: 8, completedLessons: 8 } // 100% complete!
 ];
 
 export default function CoursesPage() {
-  const isLoggedIn = true;
+  const isLoggedIn = <true></true>;
   const userName = "Cosmic Student";
 
   //  THE DYNAMIC ALGORITHM: Find the highest enrolled number in the list

@@ -1732,3 +1732,232 @@ body::before {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
+
+/* =========================================
+   LEARNING THEATER (VIDEO PLAYER PAGE)
+   ========================================= */
+
+/* The 70/30 Split Screen */
+.learning-theater-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    height: 100vh;
+    padding-top: 7rem;
+    /* Pushes the entire theater below the Navbar */
+    background-color: #f6f7b5;
+    overflow: hidden;
+}
+
+/* --- LEFT SIDE: VIDEO --- */
+.video-section {
+    padding: 2rem;
+    overflow-y: hidden; /* Prevents video section from scrolling */
+}
+
+/* Back to Dashboard Button */
+.back-btn {
+    display: block;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 1.5rem auto;
+    color: #b5852a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+/* The Black 16:9 Video Box */
+.video-player-box {
+    background-color: #1a1a2e;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.play-icon {
+    font-size: 5rem;
+    color: #b5852a;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+/* Video Title & Buttons (Side-by-side) */
+.video-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem auto 0 auto;
+    width: 100%;
+    max-width: 850px;
+}
+
+.video-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.video-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Black & Gold: Download Button */
+.btn-resources {
+    background-color: #1a1a1a;
+    border: 1px solid #b5852a;
+    color: #b5852a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-resources:hover {
+    background-color: #b5852a;
+    color: #1a1a1a;
+    box-shadow: 0 4px 10px rgba(181, 133, 42, 0.3);
+}
+
+/* Gold & Black: Mark as Done Button */
+.btn-mark-complete {
+    background-color: #b5852a;
+    border: 1px solid #b5852a;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-mark-complete:hover {
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #b5852a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- RIGHT SIDE: PLAYLIST SIDEBAR --- */
+.playlist-sidebar {
+    background-color: white;
+    border-left: 1px solid #e8e3c8;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.sidebar-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    padding: 1.5rem;
+    border-bottom: 2px solid #e8e3c8;
+    text-align: center;
+    margin: 0;
+    background-color: #fdfbf7;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.module-group {
+    border-bottom: 1px solid #e8e3c8;
+}
+
+.module-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #b5852a;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* The Clickable Lessons */
+.lesson-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover Effect: Slide slightly right with gold tint */
+.lesson-item:hover {
+    background-color: #fdfbf7;
+    transform: translateX(4px);
+}
+
+/* The Active (Currently Playing) Lesson */
+.active-lesson {
+    background-color: #fcf9f0;
+    border-left: 4px solid #b5852a;
+    box-shadow: inset 0 0 15px rgba(181, 133, 42, 0.05);
+}
+
+.lesson-status {
+    font-size: 1rem;
+    color: #b5852a;
+}
+
+.lesson-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lesson-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    transition: color 0.2s;
+}
+
+.lesson-item:hover .lesson-name {
+    color: #b5852a;
+}
+
+.active-lesson .lesson-name {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.lesson-time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .learning-theater-wrapper {
+        grid-template-columns: 1fr;
+        /* Stacks player on top of playlist */
+        height: auto;
+        overflow: visible;
+    }
+
+    .playlist-sidebar {
+        height: auto;
+        border-left: none;
+        border-top: 1px solid #e8e3c8;
+    }
+}

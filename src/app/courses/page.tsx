@@ -16,7 +16,7 @@ const MOCK_ENROLLED_COURSES = [
 ];
 
 export default function CoursesPage() {
-  const isLoggedIn = <true></true>;
+  const isLoggedIn = true;
   const userName = "Cosmic Student";
 
   //  THE DYNAMIC ALGORITHM: Find the highest enrolled number in the list

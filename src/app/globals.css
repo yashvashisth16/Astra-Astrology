@@ -1816,25 +1816,8 @@ body::before {
     gap: 1rem;
 }
 
-/* Black & Gold: Download Button */
-.btn-resources {
-    background-color: #1a1a1a;
-    border: 1px solid #b5852a;
-    color: #b5852a;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-resources:hover {
-    background-color: #b5852a;
-    color: #1a1a1a;
-    box-shadow: 0 4px 10px rgba(181, 133, 42, 0.3);
-}
-
-/* Gold & Black: Mark as Done Button */
+/* Golden Buttons for Video Actions */
+.btn-resources,
 .btn-mark-complete {
     background-color: #b5852a;
     border: 1px solid #b5852a;
@@ -1846,6 +1829,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
+.btn-resources:hover,
 .btn-mark-complete:hover {
     background-color: #1a1a1a;
     border-color: #1a1a1a;

@@ -1,147 +1,120 @@
 "use client";
 
-import { useState } from "react";
-import { useSession } from "next-auth/react";
+import React, { useState } from 'react';
 
 export default function ConsultationBookingForm() {
-  const { data: session } = useSession();
-  const [result, setResult] = useState<{ title: string; desc: string } | null>(null);
+  //  MOCK AUTH STATE: Change this to 'false' to see the Name/Email fields appear!
+  const isLoggedIn = true;
+  const userName = "Cosmic Student";
 
-  const handleSubmit = () => {
-    // Basic validation logic
-    const name = (document.getElementById("audit-name") as HTMLInputElement).value;
-    const email = (document.getElementById("audit-email") as HTMLInputElement).value;
-    const type = (document.getElementById("audit-type") as HTMLSelectElement).value;
+  // Form State
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-    if (!name || !email || !type) {
-      alert("Please fill in your name, email, and primary focus area.");
-      return;
-    }
+  // Fake Submit Handler
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Recommendation logic matching legacy script.js
-    let recommendation = { title: "", desc: "" };
-    switch (type) {
-      case "career":
-        recommendation = {
-          title: "Recommended: Natal Chart Analysis (Vocation Focus)",
-          desc: "Based on your focus on professional direction, a deep dive into your midheaven, 10th house, and core vocational indicators will provide the most clarity.",
-        };
-        break;
-      case "love":
-        recommendation = {
-          title: "Recommended: Relationship Synastry",
-          desc: "To understand your partnership dynamics, comparing your chart with your partner's (or analyzing your 7th house natal placements) is highly advised.",
-        };
-        break;
-      case "self":
-        recommendation = {
-          title: "Recommended: Comprehensive Natal Analysis",
-          desc: "For personal development, understanding the foundational architecture of your birth chart is the essential first step.",
-        };
-        break;
-      case "future":
-        recommendation = {
-          title: "Recommended: Predictive Transit Report",
-          desc: "Since you are looking at strategic planning and timing, analyzing upcoming planetary transits and progressions will give you the roadmap you need.",
-        };
-        break;
-      default:
-        recommendation = {
-          title: "Recommended: Initial Consultation",
-          desc: "We recommend starting with a foundational reading to assess your current astrological climate.",
-        };
-    }
-    setResult(recommendation);
+    // Simulate database save delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSuccess(true);
+    }, 1500);
   };
 
+  if (success) {
+    return (
+      <div className="booking-success-card">
+        <h2>Request Received</h2>
+        <p>Dr. Priti's team will review your chart details and contact you via email with available consultation slots.</p>
+        <button onClick={() => setSuccess(false)} className="btn-outline mt-4">Book Another</button>
+      </div>
+    );
+  }
+
   return (
-    <>
-      <div className={`audit-form ${result ? 'hidden' : ''}`} id="audit-form">
-        {!session && (
-          <div className="audit-personal">
-            <div className="audit-group">
-              <label htmlFor="audit-name">Full Name <span className="required-star">*</span></label>
-              <input type="text" id="audit-name" className="form-input" placeholder="e.g. Alexandra Reid" autoComplete="name" />
-            </div>
-
-            <div className="audit-group">
-              <label htmlFor="audit-email">Email Address <span className="required-star">*</span></label>
-              <input type="email" id="audit-email" className="form-input" placeholder="e.g. alex@example.com" autoComplete="email" />
-            </div>
-
-            <div className="audit-row">
-              <div className="audit-group">
-                <label htmlFor="audit-dob">Date of Birth <span className="required-star">*</span></label>
-                <input type="date" id="audit-dob" className="form-input" />
-              </div>
-              <div className="audit-group">
-                <label htmlFor="audit-time">Time of Birth <span className="required-star">*</span></label>
-                <input type="time" id="audit-time" className="form-input" />
-              </div>
-            </div>
-
-            <div className="audit-group">
-              <label>Place of Birth <span className="required-star">*</span></label>
-              <div className="audit-row audit-row-3">
-                <div className="audit-group audit-group-nested">
-                  <input type="text" id="audit-city" className="form-input" placeholder="City" />
-                </div>
-                <div className="audit-group audit-group-nested">
-                  <input type="text" id="audit-state" className="form-input" placeholder="State / Province" />
-                </div>
-                <div className="audit-group audit-group-nested">
-                  <input type="text" id="audit-country" className="form-input" placeholder="Country" />
-                </div>
-              </div>
-            </div>
-            
-            <div className="audit-divider">
-              <span>Consultation Preferences</span>
-            </div>
-          </div>
-        )}
-
-        <div className="audit-group">
-          <label htmlFor="audit-type">1. What is your primary area of focus? <span className="required-star">*</span></label>
-          <select id="audit-type" className="form-select" defaultValue="">
-            <option value="" disabled>Select an area...</option>
-            <option value="career">Career &amp; Professional Direction</option>
-            <option value="love">Relationships &amp; Partnerships</option>
-            <option value="self">Personal Development</option>
-            <option value="future">Strategic Planning &amp; Timing</option>
-          </select>
-        </div>
-
-        <div className="audit-group">
-          <label htmlFor="audit-feeling">2. How would you characterise your current situation? <span className="required-star">*</span></label>
-          <select id="audit-feeling" className="form-select" defaultValue="">
-            <option value="" disabled>Select a situation...</option>
-            <option value="stuck">Seeking clarity at a crossroads</option>
-            <option value="transition">In the midst of a major transition</option>
-            <option value="inspired">Ready to act, seeking optimal timing</option>
-          </select>
-        </div>
-
-        <div className="audit-group">
-          <label htmlFor="audit-element">3. Which elemental quality resonates most? <span className="required-star">*</span></label>
-          <select id="audit-element" className="form-select" defaultValue="">
-            <option value="" disabled>Select an element...</option>
-            <option value="fire">Fire — Drive, ambition, leadership</option>
-            <option value="earth">Earth — Stability, structure, results</option>
-            <option value="air">Air — Communication, strategy, ideas</option>
-            <option value="water">Water — Intuition, emotion, depth</option>
-          </select>
-        </div>
-
-        <button id="audit-btn" className="btn-primary" onClick={handleSubmit} type="button">Receive Your Recommendation</button>
+    <div className="smart-booking-wrapper">
+      <div className="booking-header">
+        <h2>Schedule a Consultation</h2>
+        <p>Precise, evidence-based astrological analysis.</p>
       </div>
 
-      {result && (
-        <div id="audit-result" className="audit-result">
-          <h4 id="result-title">{result.title}</h4>
-          <p id="result-desc">{result.desc}</p>
+      <form onSubmit={handleSubmit} className="booking-form">
+
+        {/* CONTACT DETAILS */}
+        <div className="form-row">
+          <div className="form-group">
+            <label>Full Name *</label>
+            <input 
+              type="text" 
+              required 
+              placeholder="Enter your full name" 
+              defaultValue={isLoggedIn ? userName : ""}
+              readOnly={isLoggedIn}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email Address *</label>
+            <input 
+              type="email" 
+              required 
+              placeholder="Enter your email" 
+              defaultValue={isLoggedIn ? "student@cosmos.com" : ""}
+              readOnly={isLoggedIn}
+            />
+          </div>
         </div>
-      )}
-    </>
+
+        <hr className="form-divider" />
+
+        {/* BIRTH DETAILS */}
+        <h3 className="form-section-title">Birth Details</h3>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Date of Birth *</label>
+            <input type="date" required className="custom-datetime-input" />
+          </div>
+          <div className="form-group">
+            <label>Exact Time *</label>
+            <input type="time" required className="custom-datetime-input" />
+          </div>
+        </div>
+        <div className="form-group">
+          <label>City & Country *</label>
+          <input type="text" required placeholder="e.g. Mumbai, Maharashtra, India" />
+        </div>
+
+        <hr className="form-divider" />
+
+        {/* CONSULTATION DETAILS */}
+        <h3 className="form-section-title">Consultation Focus</h3>
+        <div className="form-group">
+          <label>Primary Focus Area *</label>
+          <select required>
+            <option value="">Select an area...</option>
+            <option value="career">Career & Financial Vocation</option>
+            <option value="marriage">Marriage & Relationship Synastry</option>
+            <option value="health">Medical Astrology & Health</option>
+            <option value="general">General Life Prediction (1 Year)</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>Current Situation / Specific Questions *</label>
+          <textarea
+            rows={4}
+            required
+            placeholder="Briefly explain what you are experiencing and what specific answers you are seeking from this reading..."
+          ></textarea>
+        </div>
+
+        {/* SUBMIT BUTTON */}
+        <button type="submit" className="btn-buy-now" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting Request..." : "Request Consultation"}
+        </button>
+        <p className="privacy-note">Your data is kept strictly confidential.</p>
+      </form>
+    </div>
   );
 }

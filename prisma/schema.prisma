@@ -56,6 +56,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   testimonies   Testimony[]
+  
+  consultations Consultation[]
 }
 
 model Testimony {
@@ -98,4 +100,32 @@ model Lesson {
   course        Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   
   createdAt   DateTime @default(now())
+}
+
+
+// --- CONSULTATION BOOKINGS ---
+model Consultation {
+  id              String   @id @default(cuid())
+  
+  // Optional relations (If they are logged in, we link their account)
+  userId          String?  
+  user            User?    @relation(fields: [userId], references: [id])
+  
+  // Contact Info (Only used if they are NOT logged in)
+  name            String?  
+  email           String?  
+  
+  // Astrological Data (Required)
+  dob             String
+  timeOfBirth     String
+  placeOfBirth    String
+  
+  // The Consultation Details
+  focusArea       String
+  situation       String   @db.Text
+  
+  // Admin tracking (PENDING, COMPLETED, CANCELLED)
+  status          String   @default("PENDING") 
+  
+  createdAt       DateTime @default(now())
 }
